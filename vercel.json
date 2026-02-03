@@ -1,7 +1,11 @@
 {
-  "buildCommand": null,
+  "framework": null,
+  "buildCommand": "",
   "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
