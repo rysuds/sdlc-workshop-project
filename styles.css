@@ -1,0 +1,260 @@
+/* Cursor Brand Colors - Dark Mode */
+:root {
+    --bg: #14120b;
+    --fg: #edecec;
+    --fg-secondary: rgba(237, 236, 236, 0.6);
+    --accent: #f54e00;
+    --card: #1b1913;
+    --card-01: #1d1b15;
+    --card-02: #201e18;
+    --card-03: #26241e;
+    --card-04: #2b2923;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header .subtitle {
+    color: var(--fg-secondary);
+    font-size: 1.1rem;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--card-04);
+    border-radius: 8px;
+    background-color: var(--card-02);
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.controls input:focus,
+.controls select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245, 78, 0, 0.2);
+}
+
+.controls input::placeholder {
+    color: var(--fg-secondary);
+}
+
+/* Table Container */
+.table-container {
+    overflow-x: auto;
+    background-color: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--card-03);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--card-02);
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--fg);
+    border-bottom: 2px solid var(--card-04);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+th:hover {
+    background-color: var(--card-03);
+}
+
+th[data-sort]::after {
+    content: ' ↕';
+    opacity: 0.3;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--card-03);
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: var(--card-01);
+}
+
+/* Poster Image */
+.poster {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: var(--card-03);
+}
+
+.poster-placeholder {
+    width: 60px;
+    height: 90px;
+    background-color: var(--card-03);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-secondary);
+    font-size: 0.75rem;
+}
+
+/* Movie Title */
+.movie-title {
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.movie-overview {
+    font-size: 0.85rem;
+    color: var(--fg-secondary);
+    margin-top: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Genre Tags */
+.genre-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin: 0.125rem;
+    font-size: 0.75rem;
+    background-color: var(--card-03);
+    border-radius: 4px;
+    color: var(--fg-secondary);
+}
+
+/* Rating */
+.rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 600;
+}
+
+.rating-high {
+    color: #4ade80;
+}
+
+.rating-medium {
+    color: #fbbf24;
+}
+
+.rating-low {
+    color: #f87171;
+}
+
+/* Loading & Error States */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--fg-secondary);
+    font-size: 1.1rem;
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: #f87171;
+    background-color: rgba(248, 113, 113, 0.1);
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-03);
+    color: var(--fg-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .controls input,
+    .controls select {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .poster {
+        width: 40px;
+        height: 60px;
+    }
+
+    .movie-overview {
+        display: none;
+    }
+}
