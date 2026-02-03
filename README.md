@@ -41,19 +41,24 @@ cd sdlc-workshop-project
 git checkout team-X
 ```
 
-### 3. Preview Locally
-
-Open `index.html` in your browser, or use a local server:
+### 3. Install Dependencies
 
 ```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (if npx available)
-npx serve .
+npm install
 ```
 
-Then open http://localhost:8000
+### 4. Start the Development Server
+
+```bash
+npm start
+```
+
+Then open http://localhost:3000
+
+**Alternative (no npm):**
+```bash
+python -m http.server 3000
+```
 
 ---
 
@@ -217,9 +222,13 @@ sdlc-workshop-project/
 ├── index.html          # Main HTML page
 ├── styles.css          # CSS styling (Cursor brand colors)
 ├── app.js              # JavaScript - CSV parsing & table rendering
+├── server.js           # Express server for local development
+├── package.json        # Node.js dependencies
 ├── data/
 │   └── movies.csv      # Movie dataset (~9800 movies)
 ├── vercel.json         # Vercel deployment config
+├── .cursor/
+│   └── skills/         # Cursor agent skills
 └── README.md           # This file
 ```
 

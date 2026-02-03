@@ -1,0 +1,15 @@
+{
+  "name": "sdlc-workshop-project",
+  "version": "1.0.0",
+  "description": "Movie listings app for SDLC workshop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["workshop", "movies", "sdlc"],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
