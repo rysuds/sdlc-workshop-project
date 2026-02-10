@@ -3,52 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Listings</title>
+    <title>NOTFLIX</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Movie Listings</h1>
-            <p class="subtitle">Browse our collection of movies</p>
-        </header>
-
-        <div class="controls">
-            <input 
-                type="text" 
-                id="search" 
-                placeholder="Search movies..." 
-                aria-label="Search movies"
-            >
-            <select id="genre-filter" aria-label="Filter by genre">
-                <option value="">All Genres</option>
-            </select>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="#" class="logo">NOTFLIX</a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#" class="nav-link">Movies</a></li>
+                <li><a href="#" class="nav-link">New & Popular</a></li>
+                <li><a href="#" class="nav-link">My List</a></li>
+            </ul>
         </div>
-
-        <div class="table-container">
-            <table id="movies-table">
-                <thead>
-                    <tr>
-                        <th>Poster</th>
-                        <th data-sort="Title">Title</th>
-                        <th data-sort="Genre">Genre</th>
-                        <th data-sort="Vote_Average">Rating</th>
-                        <th data-sort="Release_Date">Release Date</th>
-                    </tr>
-                </thead>
-                <tbody id="movies-body">
-                    <!-- Movies will be loaded here -->
-                </tbody>
-            </table>
+        <div class="navbar-right">
+            <button class="search-btn" id="search-btn" aria-label="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+            <div class="search-box" id="search-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                    type="text" 
+                    id="search" 
+                    placeholder="Titles, people, genres" 
+                    aria-label="Search movies"
+                    autocomplete="off"
+                >
+                <button class="search-close" id="search-close" aria-label="Close search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="genre-filter-wrapper">
+                <select id="genre-filter" aria-label="Filter by genre">
+                    <option value="">All Genres</option>
+                </select>
+            </div>
+            <div class="avatar">
+                <div class="avatar-img">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                </div>
+            </div>
         </div>
+    </nav>
 
-        <div class="loading" id="loading">Loading movies...</div>
-        <div class="error" id="error" style="display: none;"></div>
+    <!-- Hero Billboard -->
+    <section class="hero" id="hero">
+        <div class="hero-backdrop" id="hero-backdrop"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content" id="hero-content">
+            <!-- Filled by JS -->
+        </div>
+    </section>
 
-        <footer>
-            <p>SDLC Workshop Project</p>
-        </footer>
+    <!-- Loading State -->
+    <div class="loading-screen" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading movies...</p>
     </div>
+
+    <!-- Error State -->
+    <div class="error" id="error" style="display: none;"></div>
+
+    <!-- Movie Rows -->
+    <main class="main-content" id="main-content">
+        <!-- Genre rows will be injected here by JS -->
+    </main>
+
+    <!-- Search Results Overlay -->
+    <div class="search-results-overlay" id="search-results-overlay">
+        <div class="search-results-grid" id="search-results-grid">
+            <!-- Search results injected by JS -->
+        </div>
+    </div>
+
+    <!-- Movie Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modal-close" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-hero" id="modal-hero"></div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">FAQ</a>
+                <a href="#">Help Center</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Corporate Information</a>
+            </div>
+            <p class="footer-text">SDLC Workshop Project &mdash; NOTFLIX Clone</p>
+            <p class="footer-text small">&copy; 2026 Workshop. Not affiliated with Netflix.</p>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>
