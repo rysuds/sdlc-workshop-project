@@ -1,6 +1,6 @@
-# SDLC Workshop - Movie Listings App
+# SDLC Workshop - LinkedOut
 
-A hands-on workshop simulating a real software development lifecycle. Four teams compete to improve a movie listings application, each working from their own protected branch with isolated deployments.
+A hands-on workshop simulating a real software development lifecycle. Four teams compete to improve a LinkedIn clone application ("LinkedOut"), each working from their own protected branch with isolated deployments.
 
 ## Workshop Overview
 
@@ -50,15 +50,62 @@ npm install
 ### 4. Start the Development Server
 
 ```bash
-npm start
+npm run dev
 ```
 
 Then open http://localhost:3000
 
-**Alternative (no npm):**
-```bash
-python -m http.server 3000
+---
+
+## Tech Stack
+
+- **React 19** - UI framework
+- **Vite** - Build tool and dev server
+- **Vanilla CSS** - Styling (intentionally minimal!)
+
+---
+
+## Project Structure
+
 ```
+sdlc-workshop-project/
+├── index.html              # Vite entry point
+├── vite.config.js          # Vite configuration
+├── package.json            # Dependencies
+├── src/
+│   ├── main.jsx            # React entry point
+│   ├── App.jsx             # Main app layout
+│   ├── App.css             # Global styles (minimal!)
+│   ├── components/
+│   │   ├── Navbar.jsx      # Top navigation bar
+│   │   ├── LeftSidebar.jsx # Profile & groups sidebar
+│   │   ├── Feed.jsx        # Main post feed
+│   │   ├── Post.jsx        # Individual post component
+│   │   └── RightSidebar.jsx # News, jobs, messaging sidebar
+│   └── data/
+│       └── mockData.js     # All fake data (users, posts, jobs, etc.)
+├── data/
+│   └── movies.csv          # Legacy movie dataset (unused)
+├── vercel.json             # Vercel deployment config
+├── .cursor/
+│   └── skills/             # Cursor agent skills
+└── README.md               # This file
+```
+
+### The Mock Data
+
+All app data lives in `src/data/mockData.js`. It includes:
+- **currentUser** - The logged-in user profile (Sarah Chen)
+- **users** - 15 other user profiles
+- **posts** - 8 feed posts (regular, polls, job changes, shared articles)
+- **messages** - 5 conversation previews
+- **jobs** - 5 job listings
+- **news** - 5 trending news items
+- **notifications** - 6 notification items
+- **games** - 4 LinkedIn-style games
+- **groups, events, savedItems** - Additional user data
+- **suggestedConnections** - People you may know
+- **promoted** - Ad content
 
 ---
 
@@ -75,27 +122,19 @@ Always branch from your team branch, not from main:
 git checkout team-1
 
 # Create a feature branch
-git checkout -b team-1/add-dark-mode-toggle
+git checkout -b team-1/add-dark-mode
 ```
 
 **Step 2: Make Your Changes**
 
-Edit the files as needed. The project structure is:
-
-```
-├── index.html    # Main HTML structure
-├── styles.css    # All styling (uses CSS variables)
-├── app.js        # JavaScript logic
-└── data/
-    └── movies.csv  # Movie dataset
-```
+Edit files in `src/`. The dev server hot-reloads automatically.
 
 **Step 3: Commit and Push**
 
 ```bash
 git add .
-git commit -m "Add dark mode toggle button"
-git push -u origin team-1/add-dark-mode-toggle
+git commit -m "Add dark mode toggle"
+git push -u origin team-1/add-dark-mode
 ```
 
 **Step 4: Create a Pull Request**
@@ -112,6 +151,32 @@ Once approved, merge the PR. This triggers an automatic deploy to your team's Ve
 
 ---
 
+## Ideas for Improvements
+
+The base app is intentionally ugly (HTML tables, no styling). Here are ideas teams might implement:
+
+**Easy:**
+- Add CSS styling to make it look like real LinkedIn
+- Add profile photos/avatars (use placeholder images)
+- Make the navbar sticky
+- Add hover effects on posts and buttons
+
+**Medium:**
+- Implement like/comment functionality (useState)
+- Add a "Create Post" feature that adds to the feed
+- Build a dark mode toggle
+- Make the layout responsive (replace tables with CSS Grid/Flexbox)
+- Add a notification badge system
+
+**Hard:**
+- Add routing (React Router) for different pages
+- Implement a messaging panel
+- Add search/filter functionality for the feed
+- Build a profile page with the user's data
+- Add animations and transitions
+
+---
+
 ## Team Roles
 
 ### PM - Product Manager
@@ -124,17 +189,6 @@ Your job is to define what gets built.
 - Write clear acceptance criteria
 - Answer questions from Engineers
 
-**Ticket Template:**
-```
-Title: [Short descriptive title]
-Type: Feature / Bug / Enhancement
-Priority: High / Medium / Low
-Description: [What needs to be done]
-Acceptance Criteria:
-- [ ] Criterion 1
-- [ ] Criterion 2
-```
-
 ### Eng - Engineer
 
 Your job is to implement the tickets.
@@ -146,18 +200,6 @@ Your job is to implement the tickets.
 - Create PRs with clear descriptions
 - Address review feedback
 
-**Useful Commands:**
-```bash
-# See what branch you're on
-git branch
-
-# See recent changes
-git log --oneline -5
-
-# Check status of your changes
-git status
-```
-
 ### QA - Quality Assurance
 
 Your job is to ensure quality.
@@ -168,102 +210,6 @@ Your job is to ensure quality.
 - Verify acceptance criteria are met
 - Approve or request changes on PRs
 - File bugs in Notion when issues are found
-
-**Review Checklist:**
-- [ ] Code is readable and well-organized
-- [ ] No obvious bugs or errors
-- [ ] Feature works as described in the ticket
-- [ ] UI looks good and is responsive
-- [ ] No console errors
-
----
-
-## Notion MCP Setup (for Engineers)
-
-Connect Cursor to Notion to pull tickets directly into your IDE.
-
-### Step 1: Enable Notion MCP in Cursor
-
-1. Open Cursor Settings (Cmd/Ctrl + ,)
-2. Search for "MCP" or navigate to the MCP section
-3. Find "Notion" in the list of available MCPs
-4. Click to enable it
-
-### Step 2: Authenticate with Notion
-
-1. Click "Authenticate" or "Connect"
-2. Sign in to your Notion account
-3. Select the workspace containing your team's backlog
-4. Grant Cursor access
-
-### Step 3: Share Your Database
-
-1. Open your team's Notion backlog database
-2. Click "Share" in the top right
-3. Find "Cursor" or the integration name
-4. Click "Invite"
-
-### Step 4: Query Tickets in Cursor
-
-Once connected, you can ask Cursor:
-
-- "What tickets are in my Notion backlog?"
-- "Show me high priority bugs from Notion"
-- "What's the next ticket I should work on?"
-
-Cursor will fetch the data directly from your Notion workspace.
-
----
-
-## Project Structure
-
-```
-sdlc-workshop-project/
-├── index.html          # Main HTML page
-├── styles.css          # CSS styling (Cursor brand colors)
-├── app.js              # JavaScript - CSV parsing & table rendering
-├── server.js           # Express server for local development
-├── package.json        # Node.js dependencies
-├── data/
-│   └── movies.csv      # Movie dataset (~9800 movies)
-├── vercel.json         # Vercel deployment config
-├── .cursor/
-│   └── skills/         # Cursor agent skills
-└── README.md           # This file
-```
-
-### Key Features of the Base App
-
-- Displays first 50 movies from the dataset
-- Search by title or description
-- Filter by genre
-- Sortable columns (click headers)
-- Responsive design
-- Movie posters loaded from TMDB
-
----
-
-## Ideas for Improvements
-
-Here are some features teams might implement:
-
-**Easy:**
-- Add pagination (show more movies)
-- Add a "favorites" feature (localStorage)
-- Improve search highlighting
-- Add movie count display
-
-**Medium:**
-- Add more filters (year, rating range)
-- Implement light/dark mode toggle
-- Add movie detail modal on click
-- Improve mobile responsiveness
-
-**Hard:**
-- Add sorting indicators in headers
-- Implement infinite scroll
-- Add keyboard navigation
-- Create a grid view option
 
 ---
 
@@ -277,8 +223,6 @@ Team branches are protected. You cannot push directly to them.
 3. Open a PR to your team branch
 4. Get at least 1 approval
 5. Merge the PR
-
-This mirrors real-world development workflows.
 
 ---
 
@@ -297,11 +241,11 @@ git checkout -b team-X/my-feature
 2. Wait 1-2 minutes for Vercel to deploy
 3. Hard refresh the page (Cmd/Ctrl + Shift + R)
 
-### "The movies aren't loading"
+### "The dev server won't start"
 
-1. Make sure you're running a local server (not opening the file directly)
-2. Check the browser console for errors
-3. Verify `data/movies.csv` exists
+1. Make sure you ran `npm install`
+2. Check you have Node.js v18+: `node --version`
+3. Try deleting `node_modules` and reinstalling: `rm -rf node_modules && npm install`
 
 ### "Git says I have conflicts"
 
@@ -322,10 +266,11 @@ git push --force-with-lease
 
 ## Resources
 
+- [React Documentation](https://react.dev)
+- [Vite Documentation](https://vite.dev)
 - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
 - [Cursor Documentation](https://docs.cursor.com)
 - [Vercel Documentation](https://vercel.com/docs)
-- [Notion API Docs](https://developers.notion.com)
 
 ---
 

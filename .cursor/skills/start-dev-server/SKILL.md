@@ -1,6 +1,6 @@
 ---
 name: start-dev-server
-description: Start the development server for the movie listings app. Use when the user wants to run, start, or launch the app locally, or asks how to preview the project.
+description: Start the development server for the LinkedOut app. Use when the user wants to run, start, or launch the app locally, or asks how to preview the project.
 ---
 
 # Start Development Server
@@ -11,37 +11,33 @@ Run the development server:
 
 ```bash
 npm install   # First time only
-npm start     # Starts server on http://localhost:3000
+npm run dev   # Starts Vite dev server on http://localhost:3000
 ```
 
 ## Prerequisites
 
-- Node.js installed (v14 or higher)
-- Run `npm install` once to install Express
+- Node.js installed (v18 or higher)
+- Run `npm install` once to install React, Vite, and dependencies
 
 ## Verification
 
 After starting, verify:
-1. Terminal shows "Server running at http://localhost:3000"
+1. Terminal shows "Local: http://localhost:3000/"
 2. Open http://localhost:3000 in browser
-3. Movie table loads with data
+3. LinkedOut page loads with feed posts
 
 ## Troubleshooting
 
 **Port already in use:**
 ```bash
-# Use a different port
-PORT=3001 npm start
+# Vite will auto-pick the next available port
+# Or kill the process using port 3000:
+kill $(lsof -ti:3000)
+npm run dev
 ```
 
-**Movies not loading:**
-- Check browser console for errors
-- Verify `data/movies.csv` exists
-
-## Alternative (No Install)
-
-If npm is unavailable:
+**Build for production:**
 ```bash
-python -m http.server 3000
+npm run build    # Creates dist/ folder
+npm run preview  # Preview the production build
 ```
-Then open http://localhost:3000
