@@ -1,0 +1,7 @@
+/* LinkedOut - Base Styles */
+/* Intentionally minimal. Teams should improve this! */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 8px;
+}

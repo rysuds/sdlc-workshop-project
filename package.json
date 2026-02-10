@@ -1,15 +1,22 @@
 {
   "name": "sdlc-workshop-project",
   "version": "1.0.0",
-  "description": "Movie listings app for SDLC workshop",
-  "main": "server.js",
+  "description": "LinkedOut - Professional Network app for SDLC workshop",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": ["workshop", "movies", "sdlc"],
+  "keywords": ["workshop", "linkedin", "sdlc", "react"],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^6.0.0"
   }
 }
